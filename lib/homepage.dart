@@ -1,38 +1,118 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+// class HomePage extends StatelessWidget {
+//   const HomePage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Dashboard"),
-        actions: const [],
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: const [
-            ListTile(
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(
-                  "https://i.ibb.co/PGv8ZzG/me.jpg",
-                ),
-              ),
-              title: Text("John doe"),
-              subtitle: Text("john.doe@gmail.com"),
-              trailing: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.add,
-                  size: 24.0,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text("Dashboard"),
+//         actions: const [],
+//       ),
+//       body: Container(
+//         padding: const EdgeInsets.all(10.0),
+//         child: Column(
+//           children: const [
+//             LayoutBuilder(
+//               builder: (context, constraint) {
+//                 List menus = [
+//                   {
+//                     "icon": Icons.abc,
+//                     "label": "Home",
+//                     "onTap": () {},
+//                   },
+//                   {
+//                     "icon": Icons.tiktok,
+//                     "label": "Tiktok",
+//                     "onTap": () {},
+//                   },
+//                   {
+//                     "icon": Icons.facebook,
+//                     "label": "Facebook",
+//                     "onTap": () {},
+//                   },
+//                   {
+//                     "icon": Icons.access_alarm,
+//                     "label": "Task",
+//                     "onTap": () {},
+//                   },
+//                   {
+//                     "icon": Icons.developer_board,
+//                     "label": "Developer",
+//                     "onTap": () {},
+//                   },
+//                   {
+//                     "icon": Icons.web,
+//                     "label": "Website",
+//                     "onTap": () {},
+//                   },
+//                   {
+//                     "icon": Icons.mobile_screen_share_rounded,
+//                     "label": "Share",
+//                     "onTap": () {},
+//                   },
+//                   {
+//                     "icon": Icons.event,
+//                     "label": "Event",
+//                     "onTap": () {},
+//                   },
+//                 ];
+
+//                 return Wrap(
+//                   children: List.generate(
+//                     menus.length,
+//                     (index) {
+//                       var item = menus[index];
+
+//                       var size = constraint.biggest.width / 4;
+
+//                       return SizedBox(
+//                         width: size,
+//                         height: size,
+//                         child: ElevatedButton(
+//                           style: ElevatedButton.styleFrom(
+//                             foregroundColor: Colors.blueGrey,
+//                             animationDuration:
+//                                 const Duration(milliseconds: 1000),
+//                             backgroundColor: Colors.transparent,
+//                             splashFactory: InkSplash.splashFactory,
+//                             shadowColor: Colors.transparent,
+//                             elevation: 0.0,
+//                           ),
+//                           onPressed: () => item["onTap"](),
+//                           child: Column(
+//                             crossAxisAlignment: CrossAxisAlignment.center,
+//                             mainAxisAlignment: MainAxisAlignment.center,
+//                             children: [
+//                               Icon(
+//                                 item["icon"],
+//                                 color: Colors.blueGrey,
+//                               ),
+//                               const SizedBox(
+//                                 height: 4.0,
+//                               ),
+//                               Text(
+//                                 "${item["label"]}",
+//                                 textAlign: TextAlign.center,
+//                                 overflow: TextOverflow.ellipsis,
+//                                 style: const TextStyle(
+//                                   color: Colors.blueGrey,
+//                                   fontSize: 8.0,
+//                                 ),
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                       );
+//                     },
+//                   ),
+//                 );
+//               },
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
