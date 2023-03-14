@@ -79,7 +79,7 @@ class _GetBasicState extends State<GetBasic> {
                     // body = myrespone.body;
                     // body = data["data"]["email"].toString();
                     id = data["data"]["id"].toString();
-                    email = data["data"]["subkh4n"].toString();
+                    email = data["data"]["email"].toString();
                     name =
                         "${data["data"]["first_name"]} ${data["data"]["last_name"]}";
                   });
