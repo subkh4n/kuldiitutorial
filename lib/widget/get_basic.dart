@@ -13,11 +13,17 @@ class GetBasic extends StatefulWidget {
 }
 
 class _GetBasicState extends State<GetBasic> {
-  late String body;
+  // late String body; /// komen dlu karena ini mengambil data body nya
+  late String id;
+  late String email;
+  late String name;
 
   @override
   void initState() {
-    body = "belum ada data";
+    /// body = "belum ada data";
+    id = "";
+    email = "";
+    name = "";
     super.initState();
   }
 
@@ -33,19 +39,19 @@ class _GetBasicState extends State<GetBasic> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              body,
+              "ID = $id",
               style: const TextStyle(
                 fontSize: 14.0,
               ),
             ),
             Text(
-              body,
+              "Email = $email",
               style: const TextStyle(
                 fontSize: 14.0,
               ),
             ),
             Text(
-              body,
+              "Nama = $name",
               style: const TextStyle(
                 fontSize: 14.0,
               ),
@@ -71,13 +77,16 @@ class _GetBasicState extends State<GetBasic> {
                   print(data["data"]);
                   setState(() {
                     // body = myrespone.body;
-                    body = data["data"]["email"].toString();
+                    // body = data["data"]["email"].toString();
+                    id = data["data"]["id"].toString();
+                    email = data["data"]["subkh4n"].toString();
+                    name = "${data["first_name"]} ${data["last_name"]}";
                   });
                 } else {
                   print("error ${myrespone.statusCode}");
-                  setState(() {
-                    body = "error ${myrespone.statusCode}";
-                  });
+                  // setState(() {
+                  //   body = "error ${myrespone.statusCode}";
+                  // });
                 }
 
                 // print(myrespone.statusCode); //ini berupa object
