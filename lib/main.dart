@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kulditutor/widget/get_basic.dart';
+import 'package:kulditutor/homepage.dart';
+// import 'package:kulditutor/widget/get_basic.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const GetBasic(),
+      home: const HomePage(),
     );
   }
 }
