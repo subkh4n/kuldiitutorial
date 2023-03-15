@@ -69,7 +69,7 @@ class _GetBasicState extends State<GetBasic> {
               onPressed: () async {
                 // ignore: unused_local_variable
                 var myrespone =
-                    await http.get(Uri.parse("https://reqres.in/api/users/2"));
+                    await http.get(Uri.parse("https://reqres.in/api/users/5"));
                 if (myrespone.statusCode == 200) {
                   //berhasil get data
                   print("berhasil");

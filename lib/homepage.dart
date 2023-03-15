@@ -1,19 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:kulditutor/widget/get_advance.dart';
+import 'package:kulditutor/widget/get_basic.dart';
+import 'package:kulditutor/widget/get_tengah.dart';
+import 'package:kulditutor/widget/tutor_delete.dart';
+import 'package:kulditutor/widget/tutor_faker.dart';
+import 'package:kulditutor/widget/tutor_futurebuilder.dart';
+import 'package:kulditutor/widget/tutor_model.dart';
+import 'package:kulditutor/widget/tutor_post.dart';
+import 'package:kulditutor/widget/tutor_put.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({Key? key}) : super(key: key);
+
+  final List<Map<String, dynamic>> menu = [
+    {
+      "label": "Get Basic",
+      "page": const GetBasic(),
+    },
+    {
+      "label": "Get Menengah",
+      "page": const GetTengah(),
+    },
+    {
+      "label": "Get Advanced",
+      "page": const GetAdvance(),
+    },
+    {
+      "label": "Tutorial Delete",
+      "page": const TutorDelete(),
+    },
+    {
+      "label": "Tutorial Post",
+      "page": const TutorPost(),
+    },
+    {
+      "label": "Tutorial Future",
+      "page": const TutorFutureBuilder(),
+    },
+    {
+      "label": "Tutorial Put",
+      "page": const TutorPut(),
+    },
+    {
+      "label": "Tutorial ModelHttp",
+      "page": const TutorModelHttp(),
+    },
+    {
+      "label": "Tutorial Faker",
+      "page": const TutorFaker(),
+    },
+    {
+      "label": "Tutorial FutureBuilder",
+      "page": const TutorFutureBuilder(),
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Dashboard"),
-        actions: const [],
+        // actions: [],
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              "Tutorial Kuldii Project",
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(
               height: 20.0,
             ),
@@ -21,13 +81,19 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               controller: ScrollController(),
               child: Row(
-                children: List.generate(
-                  10,
-                  (index) {
-                    var item = {};
-                    bool selected = index == 0;
+                children: menu.asMap().entries.map((entry) {
+                  final index = entry.key;
+                  final page = entry.value['page']!;
+                  final selected = index == 0;
 
-                    return Container(
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => page),
+                      );
+                    },
+                    child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 12.0,
                         vertical: 8.0,
@@ -41,64 +107,78 @@ class HomePage extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "Menu ${index + 1}",
+                          entry.value['label']!,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 10.0,
                           ),
                         ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                }).toList(),
               ),
             ),
             const SizedBox(
               height: 20.0,
             ),
-            const ListTile(
-              title: Text("John doe"),
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 24.0,
-              ),
-            ),
-            const ListTile(
-              leading: Icon(Icons.share),
-              minLeadingWidth: 0.0,
-              title: Text("John doe"),
-              trailing: SizedBox(
-                width: 50,
-                child: Icon(
-                  Icons.chevron_right,
-                  size: 24.0,
-                ),
-              ),
-            ),
-            ListView.separated(
-              itemCount: 3,
-              shrinkWrap: true,
-              physics: const ScrollPhysics(),
-              separatorBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 4.0,
-                );
-              },
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.grey[200],
-                      backgroundImage: const NetworkImage(
-                        "https://i.ibb.co/k15qWF7/photo-1487412720507-e7ab37603c6f-ixlib-rb-4-0.jpg",
-                      ),
-                    ),
-                    title: const Text("Jessica Doe"),
-                    subtitle: const Text("Programmer"),
+            Column(
+              children: [
+                GridView.builder(
+                  padding: EdgeInsets.zero,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1 / 0.28,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 6,
+                    crossAxisSpacing: 6,
                   ),
-                );
-              },
-            ),
+                  itemCount: menu.length,
+                  shrinkWrap: true,
+                  physics: const ScrollPhysics(),
+                  itemBuilder: (BuildContext context, int index) {
+                    var item = menu[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => item["page"]),
+                        );
+                      },
+                      child: Ink(
+                        decoration: const BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10.0),
+                          ),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0,
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  item["label"],
+                                  style: const TextStyle(
+                                    fontSize: 14.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              const Icon(
+                                Icons.chevron_right_rounded,
+                                size: 24.0,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ),
